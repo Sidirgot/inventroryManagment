@@ -2,10 +2,10 @@
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Categories') }}
+                {{ __('routes.categories') }}
             </h2>
 
-            <x-buttons.addNew>
+            <x-buttons.addNew href="{{ route('categories.create') }}">
                 <x-slot name="displayText">
                     Add New
                 </x-slot>
@@ -14,44 +14,43 @@
     </x-slot>
 
     <x-page.wrapper>
-        <x-table.wrapper>
-            <x-table.table>
-                <x-table.thead>
-                    <tr>
-                        <x-table.table-th>Title</x-table.table-th>
-                        <x-table.table-th>Status</x-table.table-th>
-                        <x-table.table-th class="text-center">Number of Products</x-table.table-th>
-                        <x-table.table-th></x-table.table-th>
-                    </tr>
-                </x-table.thead>
-                <x-table.tbody>
+        @if ($message = Session::get('success'))
+            <div class="fixed right-6 z-50">
+                <div x-data="{ show: false }"
+                    x-init="() => {
+                        setTimeout(() => show = true, 500);
+                        setTimeout(() => show = false, 3000);
+                    }"
+                    x-show="show" 
+                    x-transition:enter="transform transition ease-in-out duration-300" 
+                    x-transition:enter-start="translate-x-40 opacity-0" 
+                    x-transition:enter-end="translate-x-0 opacity-100" 
+                    x-transition:leave="transform transition ease-in-out duration-300" 
+                    x-transition:leave-start="translate-x-0 opacity-100" 
+                    x-transition:leave-end="translate-x-40 opacity-0"
+                    x-description="Notification panel, show/hide based on alert state." 
+                    @click.away="show = false"
+                    class="bg-green-500 text-white shadow-lg rounded-lg pointer-events-none">
 
-                    <tr>
-                        <x-table.table-td>
-                            Regional Paradigm Technician
-                        </x-table.table-td>
-                        <x-table.table-td>
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-500 text-white">
-                                Active
-                            </span>
-                        </x-table.table-td>
-                        <x-table.table-td class="text-sm text-gray-500 text-center">
-                            2
-                        </x-table.table-td>
-                        <x-table.table-td class="text-right text-sm font-medium flex items-center">
-                            <a href="#" class="bg-yellow-500 hover:bg-yellow-700 text-white rounded p-1 transition duration-300 ease-in-out mx-1">
-                                <x-table.editSvg />
-                            </a>
+                    <div class="rounded-lg shadow-xs overflow-hidden">
+                        <div class="p-4 flex items-center">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="w-6 h-6" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm leading-5 font-medium text-white">
+                                    {{ $message }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
 
-                            <a href="#" class="bg-red-500 hover:bg-red-700 text-white rounded p-1 transition duration-300 ease-in-out mx-1">
-                                <x-table.deleteSvg />
-                            </a>
-                        </x-table.table-td>
-                    </tr>
-
-                </x-table.tbody>
-            </x-table.table>
-        </x-table.wrapper>
+        <livewire:categories.index />
     </x-page.wrapper>
 
 </x-app-layout>
