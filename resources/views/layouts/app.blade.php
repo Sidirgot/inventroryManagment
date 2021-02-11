@@ -31,7 +31,7 @@
                 <!-- Page Heading -->
                 @if (isset($header))
                     <header class="bg-white shadow pt-16">
-                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        <div class="p-2 container mx-auto">
                             {{ $header }}
                         </div>
                     </header>
@@ -42,6 +42,10 @@
                     {{ $slot }}
                 </main>
             </div>
+        </div>
+
+        <div class="bg-secondary p-2 text-center text-white text-sm">
+            &copy; {{ date('Y') }}. All right reserved.
         </div>
 
         @stack('modals')

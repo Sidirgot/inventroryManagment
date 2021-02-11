@@ -1,4 +1,4 @@
-<div class="w-40 text-white bottom-0 top-16 bg-secondary fixed -left-40 transition-all duration-300 ease-in-out sm:left-0 border-t border-blue-600">
+<div class="w-40 text-white bottom-0 top-16 bg-secondary fixed -left-40 transition-all duration-300 ease-in-out sm:left-0 border-t border-r shadow-xl border-blue-500">
     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
         
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 mr-2">
