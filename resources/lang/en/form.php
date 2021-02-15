@@ -7,6 +7,6 @@ return [
     'active' => 'Active',
     'inactive' => 'Inactive',
     'nodata' => 'No Data Found',
-    'numberofproducts' => 'NumberOfProducts',
+    'numberofproducts' => 'Number Of Products',
 
 ];
